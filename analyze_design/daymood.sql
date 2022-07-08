@@ -27,8 +27,8 @@ CREATE TABLE Board
 	view_cnt 					int 			NOT NULL 		default 0,
 	recommend_cnt 				int 			NOT NULL		default 0,
 	create_date 				timestamp 		NOT NULL,
-	weather_category 			varchar(10)		check(weather_category in('맑음', '흐림', '비')),
-	recommend_category 			varchar(10)		check(recommend_category in('영화', '도서', '음악')),
+	weather_category 			varchar(10),
+	recommend_category 			varchar(10),
 	info_category 				varchar(10),
 	PRIMARY KEY (board_no),
     FOREIGN KEY (user) REFERENCES User(user_no)
@@ -43,7 +43,7 @@ CREATE TABLE Reply
 	create_date 				timestamp 		NOT NULL,
 	reply_cnt 					int 			NOT NULL		default 0,
 	PRIMARY KEY (reply_no),
-    FOREIGN KEY (board_no) REFERENCES Board (board_no)
+    FOREIGN KEY (user_no) REFERENCES User (user_no)
 );
 
 CREATE TABLE Letter
@@ -56,7 +56,7 @@ CREATE TABLE Letter
 	sender 						varchar(20) 	NOT NULL,
 	receive_time 				timestamp 		NOT NULL,
 	send_time 					timestamp 		NOT NULL,
-	read_check 					int 			NOT NULL,
+	read_check 					int 			NOT NULL		default 0,
 	PRIMARY KEY (letter_no),
     FOREIGN KEY (user_no) REFERENCES User (user_no)
 );
@@ -66,24 +66,27 @@ CREATE TABLE Scrap
 	user_no					   	int 			NOT NULL,
 	scrap_no 					int 			NOT NULL 		AUTO_INCREMENT,
 	board_no 					int 			NOT NULL,
-	PRIMARY KEY (scrapno),
-    FOREIGN KEY (board_no) REFERENCES Board (board_no)
+	PRIMARY KEY (scrap_no),
+    FOREIGN KEY (user_no) REFERENCES User (user_no)
 );
 
 CREATE TABLE Friend
 (
-	friend_no 					int 			NOT NULL 		AUTO_INCREMENT,
-	user_no 					int 			NOT NULL,
+	friend_no int NOT NULL AUTO_INCREMENT,
+	username varchar(30) Not null,
+    friendname varchar(30),
 	PRIMARY KEY (friend_no),
-    FOREIGN KEY (user_no) REFERENCES User (user_no)
+    FOREIGN KEY (username) REFERENCES User (username),
+    FOREIGN KEY (friendname) REFERENCES User (username)
 );
 
 CREATE TABLE RequestFriend
 (
-	request_frinen_no 			int 			NOT NULL 		AUTO_INCREMENT,
-	user_no 					int 			NOT NULL,
-	f_id 						varchar(20) 	NOT NULL,
-	t_id 						varchar(20) 	NOT NULL,
-	PRIMARY KEY (request_frinen_no),
-    FOREIGN KEY (user_no) REFERENCES User (user_no)
+	request_friend_no int NOT NULL AUTO_INCREMENT,
+	f_id varchar(20) NOT NULL,
+	t_id varchar(20) NOT NULL,
+    status tinyint(3) not null,
+	PRIMARY KEY (request_frinend_no),
+    FOREIGN KEY (f_id) REFERENCES User (username),
+    FOREIGN KEY (t_id) REFERENCES User (username)
 );
