@@ -169,7 +169,7 @@ a {
 }
 
 .board_view .info {
-    padding : 15px;
+    padding : 10px;
     border-bottom: 1px solid #999;
     font-size: 0;
 }
@@ -217,4 +217,12 @@ a {
     border-bottom: 2px solid #000;
     line-height: 160%;
     font-size: 1.4rem;
+}
+
+/* 댓글 */
+.reply_wrap {
+    width : 1200px;
+    margin : 200px auto;
+    border-radius: 10px;
+    padding: 20px 0;
 }
