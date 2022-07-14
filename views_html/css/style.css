@@ -17,9 +17,10 @@ a {
 
 .board_wrap {
     width : 1200px;
-    margin : 200px auto;
+    margin : 50px auto;
     border-radius: 10px;
-    padding: 20px 0;
+    padding-top: 20px;
+    padding-bottom: 60px;
 }
 
 .board_title {
@@ -36,28 +37,26 @@ a {
 }
 
 .bt_wrap {
-    margin-top : 30px;
     text-align: center;
     font-size : 0;
 }
 
 .bt_wrap a {
     display : inline-block;
-    min-width: 80px;
-    margin-left: 10px;
-    padding : 10px;
-    border : 1px solid #000;
-    border-radius: 2px;
+    float: left;
+    min-width: 20px;
+    margin-top: 5px;
+    margin-left: 5px;
+    padding : 7px;
+    border : 1px solid #999;
+    border-radius: 10px;
     font-size: 1.4rem;
+    background : #999;
+    color : #fff;
 }
 
 .bt_wrap a:first-child {
-    margin-left: 0;
-}
-
-.bt_wrap a.on {
-    background : #000;
-    color : #fff;
+    margin-left: 10px;
 }
 
 .board_list {
@@ -126,6 +125,7 @@ a {
 
 .board_page a {
     display: inline-block;
+    margin-top: 30px;
     width: 32px;
     height: 32px;
     border: 1px solid #ddd;
@@ -147,8 +147,8 @@ a {
 }
 
 .board_page a.num.on {
-    border-color: #000;
-    background: #000;
+    border-color: #999;
+    background: #999;
     color: #fff;
 }
 
@@ -213,10 +213,25 @@ a {
 }
 
 .board_view .cont {
+    height: 500px;
     padding: 15px;
-    border-bottom: 2px solid #000;
     line-height: 160%;
     font-size: 1.4rem;
+    overflow: scroll;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.board_view .cont::-webkit-scrollbar {
+    width: 5px;
+}
+
+.board_view .cont::-webkit-scrollbar-thumb {
+    background-color: #999;
+}
+
+.board_view .cont::-webkit-scrollbar-track {
+    background-color: rgb(250,248,231);
 }
 
 /* 댓글 */
